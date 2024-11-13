@@ -133,9 +133,20 @@ print(f"for list {a} the max is {max_elem} and min is {min_elem}")
 
 # oppgaveheftet: 3.4 sum_for
 
+print(f"\n")
 
+s = 0
+M = 3
+
+for k in range(1, M+1):
+    print(k)
+    s += 1/(2*k)**2
+print(s)
 
 # oppgaveheftet: 3.5 sum_while
+
+
+
 # oppgaveheftet: 3.7 population_table
 # oppgaveheftet: 3.8 population_table2
 # oppgaveheftet: 3.11 alkane
