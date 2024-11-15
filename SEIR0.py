@@ -86,7 +86,8 @@ def solve_SEIR(T,dt,S_0,E2_0,beta):
     model = SEIR0(beta=beta)
     initial = [S_0, 0, E2_0, 0, 0, 0]
     timeval = np.arange(0, T+dt, dt)
-    solution = solve_ivp(model, (0,T) , initial, t_eval = timeval, method='RK45')
+    # solution = solve_ivp(model, (0,T) , initial, t_eval = timeval, method='RK45')
+    solution = solve_ivp(model, (0, T), initial, t_eval=timeval if dt else None, method='RK45')
     t = solution.t
     u = solution.y.T
     return t, u
