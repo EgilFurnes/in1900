@@ -34,6 +34,7 @@ class SEIR:
         
     def __call__(self, t, u):
         beta = self.beta(t)  # Evaluate beta as a function of time
+        
         r_ia = self.r_ia
         r_e2 = self.r_e2
         lmbda_1 = self.lmbda_1
@@ -128,11 +129,11 @@ test_SEIR_beta_var()
 
 # c)
 
-def solve_SEIR(T,dt,S_0,E2_0,beta):
-    model = SEIR(beta=beta)
+def solve_SEIR(T, dt, S_0, E2_0, beta):
+    model = SEIR(beta=beta)  # This works because beta is passed as a callable function
     initial = [S_0, 0, E2_0, 0, 0, 0]
-    timeval = np.arange(0, T+dt, dt)
-    solution = solve_ivp(model, (0,T) , initial, t_eval = timeval, method='RK45')
+    timeval = np.arange(0, T + dt, dt)
+    solution = solve_ivp(model, (0, T), initial, t_eval=timeval, method='RK45')
     t = solution.t
     u = solution.y.T
     return t, u
