@@ -90,10 +90,5 @@ def gradient_descent(X, Y, iterations, alpha):
             print("Accuracy: ", get_accuracy(get_predictions(A2), Y))
     return W1, b1, W2, b2
 
-W1, b1, W2, b2 = gradient_descent(X_train, Y_train, 500, 0.01)  # try smaller alpha
-
-
-
-
-
+# W1, b1, W2, b2 = gradient_descent(X_train, Y_train, 500, 0.01)  # try smaller alpha
 
