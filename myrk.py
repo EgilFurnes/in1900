@@ -88,4 +88,14 @@ def is_prime(k):
 
 print(is_prime(11))
 
+def primes(n):
+    primtall = []
+    num = 2
+    while len(primtall) < n:
+        if is_prime(num):
+            primtall.append(num)
+        num += 1
+    return primtall
+
+print(primes(10))
 
