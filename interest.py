@@ -13,3 +13,5 @@ def years(P,A,r):
 def annual_rate(P,A,n):
     return 100*((A/P)**(1.0/n)-1)
 
+def babes():
+    print(__name__)

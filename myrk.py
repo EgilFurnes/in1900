@@ -381,9 +381,28 @@ except:
 
 print("hello")
 
-from interest import years
+from interest import years, babes 
 P = 1; r = 5
 n = years(P,2*P,P)
 print(f'money has doubled after {n} years')
+
+if __name__ == '__main__':
+    print("hello bitch")
+
+print(__name__)
+print(babes())
+print(__name__)
+
+if __name__ == 'main':
+    A = 2.31525
+    P = 2.0
+    r = 5
+    n = 3
+    p = 5
+    A_ = present_amount(P,r,n)
+    P_ = initial_amount(A,r,n)
+    n_ = years(P,A,r)
+    r_ = annual_rate(P,A,n)
+    print(f'A={A_} ({A}) P={P_} ({A}) n={n_} ({n}) r={r_} ({p})')
 
 
