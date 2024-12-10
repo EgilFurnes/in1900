@@ -5,3 +5,4 @@ from matplotlib import pyplot as plt
 
 # numpy arrays
 
+print("hello")
