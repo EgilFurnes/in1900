@@ -1,0 +1,3 @@
+Hello, this is a simple text file.
+Each line contains some sample text.
+This file is created to demonstrate reading in Python.

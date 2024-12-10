@@ -298,10 +298,92 @@ from math import exp
 # p = p0*exp(-h/h0)
 # print(p)
 
-infile = open('betavalues.txt', 'r')
+infile = open('sample_file.txt', 'r')
 print(infile)
 
+with open('sample_file.txt', 'r') as file:
+    content = file.readlines()
+
+for line in content:
+    print(line.strip())
+
+infile = open('number_file.txt', 'r')
+mean = 0
+lines = 0
+for line in infile:
+    number = float(line)
+    mean = mean + number
+    lines += 1
+mean = mean/lines
+print(f'the mean value is {mean}')
+
+s = "This is a typical string"
+csvline = "Excel;sheets;often;use;semicolon;as;separator"
+print(s.split())
+print(csvline.split())
+print(csvline.split(';'))
 
 
+months = []
+values = []
+for line in infile:
+    words = line.split()
+    months.append(words[0])
+    values.append(float(words[1]))
+
+
+# filename = "rainfall.txt"
+
+def extract_data(filename):
+    infile = open(filename, 'r')
+    infile.readline()
+    months = []
+    rainfall = []
+    for line in infile:
+        words = line.split()
+        months.append(words[0])
+        rainfall.append(words[1])
+    infile.close()
+    months = months[:-1]
+    annual_avg = rainfall[-1]
+    rainfall = rainfall[:-1]
+    return months, rainfall, annual_avg
+
+months, values, avg = extract_data('rainfall.txt')
+print(months, values, avg)
+
+print('The average rainfall for the months:')
+for month, value in zip(months, values):
+    print(month, value)
+print('The average rainfall ofr the year:', avg)
+
+data = \
+[[ 0.75, 0.29619813, -0.29619813, -0.75 ],
+[ 0.29619813, 0.11697778, -0.11697778, -0.29619813],
+[-0.29619813, -0.11697778, 0.11697778, 0.29619813],
+[-0.75, -0.29619813, 0.29619813, 0.75 ]]
+
+with open('tmp_table.txt', 'w') as outfile:
+    for row in data:
+        for column in row:
+            outfile.write(f'{column:14.8f}')
+        outfile.write('\n')
+
+import sys
+try:
+    h = float(sys.argv[1])
+except:
+    print('You failed to provide a command line arg.!')
+#     exit()
+
+# p0 = 100.0; h0 = 8400
+# print(p0*exp(-h/h0))
+
+print("hello")
+
+from interest import years
+P = 1; r = 5
+n = years(P,2*P,P)
+print(f'money has doubled after {n} years')
 
 
