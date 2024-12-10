@@ -99,3 +99,209 @@ def primes(n):
 
 print(primes(10))
 
+
+
+
+from math import *
+y = sin(x)*log(x)
+
+C = [5, 10, 40, 45]
+C.append(50)
+print(C)
+
+def amount(n):
+    P = 100
+    r = 5.0
+    return P*(1+r/100)**n
+
+year1 = 10
+a1 = amount(year1)
+a2 = amount(5)
+print(a1, a2)
+print(amount(6))
+a_list = [amount(year) for year in range(11)]
+print(a_list)
+
+def amount(P, r, n):
+    return P*(1+r/100.0)**n
+
+a1 = amount(100, 5.0, 10)
+a2 = amount(10, r=3.0, n=6)
+a3 = amount(r=4, n=2, P=100)
+
+print(a1, a2, a3)
+
+def yfunc(t, v0):
+    g = 9.81
+    y = v0*t-0.5*g*t**2
+    dydt = v0-g*t
+    return y, dydt
+
+print(f"\n")
+print(yfunc(10, 100))
+position, velocity = yfunc(0.6, 3)
+print(position, velocity)
+print(position)
+print(velocity)
+
+
+def f(x):
+    return x, x**2, x**4
+
+s = f(2)
+print(type(s), s)
+x, x2, x4 = s
+print(s)
+print(x, x2, x4)
+
+def L(x,n):
+    s = 0
+    for i in range(1, n+1):
+        s += x**i/i
+    return s 
+
+x = 0.5
+from math import log
+print(L(x,3), L(x, 10), -log(1-x))
+
+from math import log
+def L2(x, n):
+    s = 0
+    for i in range(1, n+1):
+        s += x**i/i
+    value_of_sum = s
+
+    error = -log(1-x) - value_of_sum
+    return value_of_sum, error 
+
+x = 0.8; n = 10
+value, error = L2(x, n)
+print(value, error)
+print(f"\n")
+
+def table(x):
+    print(f'x={x}, -ln(1-x)={-log(1-x)}')
+    for n in [1,2,10,100]:
+        value, error = L2(x,n)
+        print(f"n={n:4d} approx: {value:7.6f}, error: {error:7.6f}")
+
+table(0.5)
+
+from math import sin, pi
+def f(x):
+    if 0 <= x <= pi:
+        return sin(x)
+    else:
+        return 0
+print(f(2))
+
+def N(x):
+    if x < 0:
+        return 0
+    elif 0 <= x < 1:
+        return x
+    elif 1 <= x < 2:
+        return 2-x
+    elif x >= 2:
+        return 0
+    
+print(N(1))
+
+def f(x): return (sin(x) if 0 <= x <= pi else 0)
+print(f(3))
+
+def d2df(f, x, h=1E-6):
+    r = (f(x-h)-2*f(x)+f(x+h))/float(h*h)
+    return r
+# print(d2df(x**2,1))
+
+def f(x):
+    return x**2 - 1
+
+f = lambda x: x**2-1
+
+df2 = d2df(lambda x: x**2-1, 1.5)
+print(df2)
+
+from math import exp
+def bisection(f, a, b, tol=1e-3):
+    if f(a)*f(b) > 0:
+        print(f"No roots or more than one root in [{a},{b}]")
+        return
+    m = (a+b)/2
+    while abs(f(m))>tol:
+        if f(a)*f(m) < 0:
+            b = m
+        else:
+            a = m
+        m = (a+b)/2
+    return m
+
+f = lambda x: x**2-4*x+exp(-x)
+sol = bisection(f, -0.5, 1, 1e-6)
+print(f"x = {sol:g} is an approx root, f({sol:g}) = {f(sol):g}")
+
+from math import exp
+def Newton(f, dfdx, x0, tol=1e-3):
+    f0 = f(x0)
+    while abs(f0) > tol:
+        x1 = x0-f0/dfdx(x0)
+        x0 = x1
+        f0 = f(x0)
+    return x0
+
+f = lambda x: x**2-4*x+exp(-x)
+dfdx = lambda x: 2*x-4-exp(-x)
+sol = Newton(f,dfdx,0,1e-6)
+
+print(f"x = {sol:g} is an approx root, f({sol:g}) = {f(sol):g}")
+
+def double(x):
+    return 2*x
+
+def test_double():
+    x = 4
+    expected = 8
+    computed = double(x)
+    success = computed == expected
+    msg = f"computed {computed}, expected {expected}"
+    assert success, msg 
+
+print(test_double())
+
+from math import sin, pi
+
+def f(x):
+    if 0 <= x <= pi:
+        return sin(x)
+    else: 
+        return 0
+    
+def test_f():
+    x1, exp1 = -1.0, 0.0
+    x2, exp2 = pi/2, 1.0
+    x3, exp3 = 3.5, 0.0 
+    
+    tol = 1e-10
+
+    assert abs(f(x1)-exp1) < tol, f'Failed for x = {x1}'
+    assert abs(f(x2)-exp2) < tol, f'Failed for x = {x2}'
+    assert abs(f(x3)-exp3) < tol, f'Failed for x = {x3}'
+
+print(test_f())
+
+from math import exp
+# h = input('Input the altitude (in meters): ')
+# h = float(h)
+# p0 = 100.0
+# h0 = 8400
+# p = p0*exp(-h/h0)
+# print(p)
+
+infile = open('betavalues.txt', 'r')
+print(infile)
+
+
+
+
+
