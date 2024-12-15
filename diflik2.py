@@ -1,6 +1,9 @@
 
 import numpy as np
 import matplotlib.pyplot as plt 
+import os
+
+os.system('cls')
 
 N = 20; T = 4
 dt = N/T; u0 = 1
@@ -48,6 +51,19 @@ class ForwardEuler_v0:
         u, dt, f, n, t = self.u, self.dt, self.f, self.n, self.t
         return u[n] + dt * f(t[n], u[n])
     
-    
+class Logistic: 
+    def __init__(self, alpha, R):
+        self.alpha = alpha
+        self.R = float(R)
+
+    def __call__(self, t, u):
+        return self.alpha * u * (1-u/self.R)
         
+problem = Logistic(alpha=0.2, R=1.0)
+solver = ForwardEuler_v0(problem)
+u0 = 0.1
+solver.set_initial_condition(u0)
+t, u = solver.solve(t_span=(0,40), N=400)
+print(t, u)
+
 
